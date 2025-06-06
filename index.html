@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn to Code by Watching Others</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-image: url("images/bg-intro-desktop.png");
+            
+            background-color: hsl(0, 100%, 74%) ;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern */
+        
+        
+
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .container {
+          
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .left-content {
+            color: white;
+        }
+
+        .left-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .left-content p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            margin-bottom: 0;
+        }
+
+        .right-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .trial-banner {
+            background: hsl(248, 32%, 49%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px 32px;
+            margin-bottom: 24px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .trial-banner p {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .trial-banner strong {
+            font-weight: 700;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #5c7cfa;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(92, 124, 250, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #6c757d;
+            font-weight: 400;
+        }
+
+        .form-group:first-child input {
+            color: #495057;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(64, 192, 87, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .terms-text {
+            font-size: 0.875rem;
+            color: #6c757d;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .terms-text a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Floating Elements */
+        .floating-icon {
+            position: absolute;
+            opacity: 1;
+            animation: floatAround 15s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 10s;
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -10px) rotate(90deg); }
+            50% { transform: translate(-5px, -20px) rotate(180deg); }
+            75% { transform: translate(-10px, 10px) rotate(270deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content {
+                gap: 60px;
+            }
+            
+            .left-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .left-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .left-content p {
+                font-size: 1rem;
+            }
+            
+            .form-container {
+                max-width: 100%;
+                padding: 32px 24px;
+            }
+            
+            .trial-banner {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-content h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 24px 20px;
+            }
+            
+            .form-group input,
+            .submit-btn {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating background elements -->
+    <div class="floating-icon">📱</div>
+    <div class="floating-icon">💻</div>
+    <div class="floating-icon">⚡</div>
+
+    <div class="container">
+        <div class="content">
+            <div class="left-content">
+                <h1>Learn to code by watching others</h1>
+                <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+            </div>
+            
+            <div class="right-content">
+                <div class="trial-banner">
+                    <p><strong>Try it free 7 days</strong> then $20/mo. thereafter</p>
+                </div>
+                
+                <div class="form-container">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="First Name" id="fname" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Last Name" id="lname" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" id="password" required>
+                        </div>
+                        <button type="submit" class="submit-btn" onclick="validate()">Claim Your Free Trial</button>
+                        <p class="terms-text">By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      
+      function validate(){
+
+        const fname = document.getElementById("fname").value;
+        const lname = document.getElementById("lname").value;
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email === "" || !emailPattern.test(email)) {
+
+            alert("please enter valid email");
+
+          } else {
+
+            alert("Hello "+ fname + ".");
+          }
+
+        
+      }
+    </script>
+</body>
+</html>
